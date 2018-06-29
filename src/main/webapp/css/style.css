@@ -15,6 +15,7 @@
 	body
 	{
 		background: #202020 url(images/img01.jpg) repeat;
+		
 	}
 
 	body,input,textarea,select
@@ -51,7 +52,7 @@
 	strong, b
 	{
 		font-weight: bold;
-		color: #000000;
+
 	}
 	
 	em, i
@@ -772,7 +773,7 @@
 		#header .container
 		{
 			position: relative;
-			padding: 4em 0em;
+			padding: 5em 0em;
 		}
 
 /*********************************************************************************/
@@ -852,7 +853,7 @@
 	#banner
 	{
 		position: relative;
-		padding: 12em 0em;
+		padding: 6em 0em;
 		background: url(../images/banner.jpg) no-repeat center;
 		background-size: cover;
 		color: #fff;
@@ -988,5 +989,9 @@
 	.balloon strong
 	{
 		color: #333 !important;
+	}
+	
+	#skel-panels-defaultWrapper {
+	height: auto !important;
 	}
 

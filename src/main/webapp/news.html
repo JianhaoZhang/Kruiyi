@@ -1,4 +1,9 @@
-
+<!DOCTYPE HTML>
+<!--
+	Ex Machina by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
 	<head>
 		<title>深圳瑞益德电子有限公司</title>
@@ -6,37 +11,20 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="css/w3.css" />
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
-		<script type="text/javascript">
-		function loadDoc(type,section) {
-			  var xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-			      document.getElementById(section).innerHTML =
-			      this.responseText;
-			    }
-			  };
-			  xhttp.open("GET", "/menu/" + type + ".html", true);
-			  xhttp.send();
-			}
-		</script>
-		
 		<noscript>
 			<link rel="stylesheet" href="css/skel-noscript.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
-		
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 	</head>
-	
-	<body class="homepage">
+	<body class="left-sidebar">
 
 	<!-- Header -->
 		<div id="header">
@@ -50,15 +38,15 @@
 				
 				<!-- Nav -->
 					<nav id="nav">
-						<p>
-							<button class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section" onclick="loadDoc('main','page');loadDoc('banner','bannerdiv')"><b>主页</b></button>
-							<button class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section" onclick="loadDoc('intro','page');loadDoc('empty','bannerdiv')"><b>公司简介</b></button>
-							<button class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section" onclick="loadDoc('news','page');loadDoc('empty','bannerdiv')"><b>新闻中心</b></button>
-							<button class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section"><b>产品介绍</b></button>
-							<button class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section"><b>招聘专栏</b></button>
-							<button class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section"><b>客户留言</b></button>
-							<button class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section"><b>联系我们</b></button>
-						</p>
+						<ul>
+							<li><a href="index.html">主页</a></li>
+							<li><a href="intro.html">公司简介</a></li>
+							<li  class="active"><a href="news.html">新闻中心</a></li>
+							<li><a href="no-sidebar.html">产品介绍</a></li>
+							<li><a href="no-sidebar.html">招聘专栏</a></li>
+							<li><a href="no-sidebar.html">客户留言</a></li>
+							<li><a href="no-sidebar.html">联系我们</a></li>
+						</ul>
 					</nav>
 
 			</div>
@@ -66,70 +54,58 @@
 	<!-- Header -->
 		
 	<!-- Banner -->
-	<div id="bannerdiv">
 		<div id="banner">
 			<div class="container">
 			</div>
 		</div>
-	</div>
 	<!-- /Banner -->
 
 	<!-- Main -->
 		<div id="page">
-
-			<!-- Extra -->
-			<div id="marketing" class="container">
-				<div class="row">
-					<div class="3u">
-						<section>
-							<header>
-								<h2>公司简介</h2>
-							</header>
-							<p class="subtitle">In posuere eleifend odio. Quisque semper augue mattis maecenas ligula.</p>
-							<p><a href="#"><img src="images/pics13.jpg" alt=""></a></p>
-							<a href="#" class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section" onclick="loadDoc('intro','page');loadDoc('empty','bannerdiv')">More</a>
-						</section>
-					</div>
-					<div class="3u">
-						<section>
-							<header>
-								<h2>新闻中心</h2>
-							</header>
-							<p class="subtitle">In posuere eleifend odio. Quisque semper augue mattis maecenas ligula.</p>
-							<p><a href="#"><img src="images/pics14.jpg" alt=""></a></p>
-							<a href="#" class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section" onclick="loadDoc('news','page');loadDoc('empty','bannerdiv')">More</a>
-						</section>
-					</div>
-					<div class="3u">
-						<section>
-							<header>
-								<h2>产品介绍</h2>
-							</header>
-							<p class="subtitle">In posuere eleifend odio. Quisque semper augue mattis maecenas ligula.</p>
-							<p><a href="#"><img src="images/pics15.jpg" alt=""></a></p>
-							<a href="#" class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section">More</a>
-						</section>
-					</div>
-					<div class="3u">
-						<section>
-							<header>
-								<h2>联系我们</h2>
-							</header>
-							<p class="subtitle">In posuere eleifend odio. Quisque semper augue mattis maecenas ligula.</p>
-							<p><a href="#"><img src="images/pics16.jpg" alt=""></a></p>
-							<a href="#" class="w3-btn w3-ripple w3-hover-indigo w3-round w3-medium w3-text-shadow w3-margin-right w3-section">More</a>
-						</section>
-					</div>
-				</div>
-			</div>
-			<!-- /Extra -->
 				
 			<!-- Main -->
-			
-		  <!-- Main -->
+			<div id="main" class="container">
+				<div class="row">
+
+					<div class="3u">
+						<section class="sidebar">
+							<header>
+								<h2>Feugiat Tempus</h2>
+							</header>
+							<ul class="style1">
+								<li><a href="#">Maecenas luctus lectus at sapien</a></li>
+								<li><a href="#">Etiam rhoncus volutpat erat</a></li>
+								<li><a href="#">Donec dictum metus in sapien</a></li>
+								<li><a href="#">Nulla luctus eleifend purus</a></li>
+								<li><a href="#">Maecenas luctus lectus at sapien</a></li>
+								<li><a href="#">Maecenas luctus lectus at sapien</a></li>
+								<li><a href="#">Donec dictum metus in sapien</a></li>
+								<li><a href="#">Integer gravida nibh quis urna</a></li>
+								<li><a href="#">Etiam posuere augue sit amet nisl</a></li>
+								<li><a href="#">Mauris vulputate dolor sit amet nibh</a></li>
+							</ul>
+						</section>
+						
+					</div>
+				
+					<div class="9u skel-cell-important">
+						<section id="newscontent">
+							<header>
+								<h2>Integer gravida nibh quis urna</h2>
+								<span class="byline">2018.6.26</span>
+							</header>
+							<p>Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Suspendisse iaculis mauris nec lorem. Donec leo. Vivamus fermentum nibh in augue. Praesent a lacus at urna congue rutrum. Nulla enim eros, porttitor eu, tempus id, varius non, nibh. Duis enim nulla, luctus eu, dapibus lacinia, venenatis id, quam. Vestibulum imperdiet, magna nec eleifend rutrum, nunc lectus vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl.</p>
+							<p>Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Suspendisse iaculis mauris nec lorem. Donec leo. Vivamus fermentum nibh in augue. Praesent a lacus at urna congue rutrum. Nulla enim eros, porttitor eu, tempus id, varius non, nibh. Duis enim nulla, luctus eu, dapibus lacinia, venenatis id, quam. Vestibulum imperdiet, magna nec eleifend rutrum, nunc lectus vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl.</p>
+							<p>Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.</p>
+						</section>
+					</div>
+					
+				</div>
+			</div>
+			<!-- Main -->
 
 		</div>
-	
+	<!-- /Main -->
 
 	<!-- Featured -->
 		<div id="featured">
@@ -227,6 +203,11 @@
 			</div>
 		</div>
 	<!-- /Footer -->
+
+	<!-- Copyright -->
+		<div id="copyright" class="container">
+			Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+		</div>
 
 
 	</body>

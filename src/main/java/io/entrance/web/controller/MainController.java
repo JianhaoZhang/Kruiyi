@@ -26,7 +26,10 @@ public class MainController {
 	public String showindex(Model model) {
 		return "index";
 	}
-	
+	@RequestMapping("/admin")
+	public String login(Model model) {
+		return "login-account";
+	}
 	
 	
 
