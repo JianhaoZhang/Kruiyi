@@ -6,9 +6,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(collectionResourceRel = "message", path = "message")
-public interface MessageRepo extends JpaRepository<Message,Long> {
+@RepositoryRestResource(collectionResourceRel = "salt", path = "salt")
+public interface SaltRepo extends JpaRepository<Salt,Long> {
 	
-	List<Message> findAll();
+	List<Salt> findAll();
+	Salt findByName(String name);
 
 }

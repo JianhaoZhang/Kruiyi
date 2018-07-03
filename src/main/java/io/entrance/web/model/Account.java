@@ -1,17 +1,16 @@
 package io.entrance.web.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-public class Message {
+public class Account {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,12 +19,12 @@ public class Message {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	@NotEmpty(message = "Entry cannot be left blank")
 	private String name;
 	
 	@NotEmpty(message = "Entry cannot be left blank")
-	@Column(columnDefinition="varchar(8192)")
-	private String body;
+	private String password;
 	
 	public String getName() {
 		return name;
@@ -34,12 +33,11 @@ public class Message {
 		this.name = name;
 	}
 	
-	
-	public String getBody() {
-		return body;
+	public String getPassword() {
+		return password;
 	}
-	public void setBody(String body) {
-		this.body = body;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public Long getId() {
 		// TODO Auto-generated method stub
