@@ -17,9 +17,20 @@ public class News {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	public News() {
+		
+	}
+	
+	public News(String title,String date, String body) {
+		this.title = title;
+		this.date = date;
+		this.body = body;
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	@NotEmpty(message = "Entry cannot be left blank")
 	private String title;
 	
@@ -27,13 +38,13 @@ public class News {
 	private String date;
 	
 	@NotEmpty(message = "Entry cannot be left blank")
-	@Column(columnDefinition="varchar(8192)")
+	@Column(columnDefinition="varchar(65536)")
 	private String body;
 	
 	public String getTitle() {
 		return title;
 	}
-	public void setName(String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 	
