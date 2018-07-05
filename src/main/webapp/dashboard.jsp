@@ -37,6 +37,39 @@
 			}
 			
 		}
+		
+		function validate_product() {
+			var value = document.getElementById("id").value;
+			var name = document.getElementById("name").value;
+			var brand = document.getElementById("brand").value;
+			var type = document.getElementById("type").value;
+			var description = document.getElementById("description").value;
+			var path = document.getElementById("path").value;
+			console.log(value.length);
+			if (value.length < 1){
+				alert("ID must be entered");
+				return false;
+			}else if (name.length <1){
+				alert("name must be entered");
+				return false;
+			}else if (brand.length <1){
+				alert("brand must be entered");
+				return false;
+			}else if (type.length <1){
+				alert("type must be entered");
+				return false;
+			}else if (description.length <1){
+				alert("description must be entered");
+				return false;
+			}else if (path.length <1){
+				alert("path must be entered");
+				return false;
+			}else{
+				alert("Submitted");
+				return true;
+			}
+			
+		}
 	</script>
   </head>
   <body>
@@ -45,7 +78,7 @@
   	<div class="w3-container  w3-white w3-padding w3-card" style="letter-spacing:4px;">
     <form id="newsform" onsubmit="return validate();" name="newsform" action="news" method="post">
     	<p><h2>News</h2></p>
-        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="ID" id="id" name="id"/></p>
+        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="PID" id="pid" name="pid"/></p>
         <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Title" id="title" name="title"/></p>
         <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Date" id="date" name="date"/></p>
         <p><textarea class="w3-input w3-padding-16"  required = "required" placeholder="Body" id="body" name="body"></textarea></p>
@@ -55,12 +88,14 @@
     </div>
     <div class="w3-half">
   	<div class="w3-container  w3-white w3-padding w3-card" style="letter-spacing:4px;">
-    <form id="productform" onsubmit="return validate();" name="productform" action="products" method="post">
+    <form id="productform" onsubmit="return validate_product();" name="productform" action="products" method="post">
     	<p><h2>Products</h2></p>
-        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="ID" id="id" name="id"/></p>
-        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Title" id="title" name="title"/></p>
-        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Date" id="date" name="date"/></p>
-        <p><textarea class="w3-input w3-padding-16"  required = "required" placeholder="Body" id="body" name="body"></textarea></p>
+        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="PID" id="pid" name="pid"/></p>
+        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Name" id="name" name="name"/></p>
+        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Brand" id="brand" name="brand"/></p>
+        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Type" id="type" name="type"/></p>
+        <p><textarea class="w3-input w3-padding-16"  required = "required" placeholder="Description" id="description" name="description"></textarea></p>
+        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="PDF" id="path" name="path"/></p>
     	<p><button class="w3-button w3-light-grey w3-padding-large" type="submit" id="submitbutton" name="submitbutton"  />Submit</p>
     </form>
     </div>

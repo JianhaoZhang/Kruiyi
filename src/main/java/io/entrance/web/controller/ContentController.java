@@ -8,6 +8,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,8 +21,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import antlr.collections.List;
 import io.entrance.web.model.News;
 import io.entrance.web.model.NewsRepo;
+import io.entrance.web.model.Products;
+import io.entrance.web.model.ProductsRepo;
 
 @Controller
 @EnableAutoConfiguration
@@ -28,6 +33,9 @@ public class ContentController {
 	
 	@Autowired
 	private NewsRepo newsrepo;
+	
+	@Autowired
+	private ProductsRepo productsrepo;
 	
 	@RequestMapping(value="/news", method = RequestMethod.POST)
 	private String newsimport(@ModelAttribute("newsform") News news, Model model) {
@@ -43,19 +51,40 @@ public class ContentController {
 		return "redirect:/dashboard";
 	}
 	
+	@RequestMapping(value="/products", method = RequestMethod.POST)
+	private String newsimport(@ModelAttribute("productsform") Products products, Model model) {
+		System.out.println("posting news");
+		
+		if (products.getPid()==0) {
+			Products instance = new Products(products.getName(),products.getBrand(),products.getType(),products.getDescription(),products.getPath());
+			this.productsrepo.save(instance);
+		}else {
+			this.productsrepo.save(products);
+		}
+		
+		return "redirect:/dashboard";
+	}
+	
 	@RequestMapping("/render")
 	private String render(HttpServletRequest request) throws IOException {
 		String phyPath = request.getSession().getServletContext().getRealPath("/");
 		//System.out.println(phyPath);
 		ArrayList<News> newsarray = (ArrayList<News>) newsrepo.findAll();
+		ArrayList<Products> productsarray = (ArrayList<Products>) productsrepo.findAll();
+		
 		create_articles(newsarray,phyPath);
 		create_news_menu(newsarray,phyPath);
-		initialize(newsarray,phyPath);
+		initialize_news(newsarray,phyPath);
+		
+		create_products(productsarray,phyPath);
+		create_products_menu(productsarray,phyPath);
+		
 		
 		return "redirect:/";
 	}
 	
-	private void initialize(ArrayList<News> newsarray,String path)throws IOException {
+	//initialize news page
+	private void initialize_news(ArrayList<News> newsarray,String path)throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/menu/news.html"));
 		writer.write("<!-- Main -->\r\n" + 
 				"			<div id=\"main\" class=\"container\">\r\n" + 
@@ -82,6 +111,7 @@ public class ContentController {
 		
 	}
 	
+	//render all news by id
 	private void create_articles(ArrayList<News> newsarray,String path) throws IOException {
 		
 		for (int i=0; i<newsarray.size();i++) {
@@ -94,6 +124,20 @@ public class ContentController {
 		
 	}
 	
+	//render all products by pid
+	private void create_products(ArrayList<Products> productsarray,String path) throws IOException {
+		
+		for (int i=0; i<productsarray.size();i++) {
+		Products temp = productsarray.get(i);
+		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/products/products"+temp.getPid()+".html"));
+		writer.write("<header>\r\n<h2>"+temp.getName()+"</h2>\r\n<span class=\"byline\">"+temp.getBrand()+"</span>\r\n</header>\r\n");
+		writer.write(temp.getDescription());
+		writer.close();
+		}
+		
+	}
+	
+	//render news section resources
 	private void create_news_menu(ArrayList<News> newsarray,String path) throws IOException {
 		
 		double number = newsarray.size();
@@ -129,6 +173,71 @@ public class ContentController {
 			
 			writer.close();
 		}
+	}
+	
+	//render products section resources
+	private void create_products_menu(ArrayList<Products> productsarray,String path) throws IOException{
+		
+		double number = productsarray.size();
+		ArrayList<String> brandlist = analyzebrands(productsarray);
+		
+		create_brand_sidebar(brandlist,path);
+		create_brand_menu(brandlist,path);
+		
+	}
+	
+	//create sidebar by brand
+	private void create_brand_sidebar(ArrayList<String> brandlist,String path) throws IOException{
+		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/productsmenu/brandmenu.html"));
+		writer.write("<section class=\"sidebar\">\r\n" + 
+				"							<header>\r\n" + 
+				"								<h2>News Menu</h2>\r\n" + 
+				"							</header>\r\n" + 
+				"							<ul class=\"style1\">\r\n");
+		for (int i=0;i<brandlist.size();i++) {
+			writer.write("<li><a href=\"#\" onclick=\"loadDoc('productsmenu/"+brandlist.get(i)+"','side2')\">"+brandlist.get(i)+"</a></li>\r\n");
+		}
+		
+		writer.write("</section>");
+		
+		writer.close();
+	}
+	
+	private void create_brand_menu(ArrayList<String> brandlist, String path) throws IOException {
+		for (String brand : brandlist) {
+			ArrayList<Products> productsbrandarray = (ArrayList<Products>)productsrepo.findByBrand(brand);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/productsmenu/"+brand+".html"));
+			writer.write("<section class=\"sidebar\">\r\n" + 
+					"							<header>\r\n" + 
+					"								<h2>Item Menu</h2>\r\n" + 
+					"							</header>\r\n" + 
+					"							<ul class=\"style1\">\r\n");
+			for (Products p : productsbrandarray) {
+				writer.write("<li><a href=\"#\" onclick=\"loadDoc('products/products"+p.getPid()+"','brandcontent')\">"+p.getName()+"</a></li>\r\n");
+			}
+			
+			writer.write("</section>\r\n");
+			writer.close();
+		}
+	}
+	
+	//get brand list without duplication
+	private ArrayList<String> analyzebrands(ArrayList<Products>productsarray){
+		
+		ArrayList<String> al = new ArrayList<>();
+		
+		for (Products p : productsarray) {
+			al.add(p.getBrand());
+		}
+		
+		LinkedHashSet<String> hs = new LinkedHashSet<>();
+		hs.addAll(al);
+		al.clear();
+		al.addAll(hs);
+		
+		System.out.println("Brand array: "+al.toString());
+		return al;
+		
 	}
 	
 	static String readFile(String path, Charset encoding) throws IOException{
