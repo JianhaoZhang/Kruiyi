@@ -74,17 +74,18 @@ public class ContentController {
 		
 		create_articles(newsarray,phyPath);
 		create_news_menu(newsarray,phyPath);
-		initialize_news(newsarray,phyPath);
+		initialize_news(phyPath);
 		
 		create_products(productsarray,phyPath);
 		create_products_menu(productsarray,phyPath);
+		initialize_products(productsarray,phyPath);
 		
 		
 		return "redirect:/";
 	}
 	
 	//initialize news page
-	private void initialize_news(ArrayList<News> newsarray,String path)throws IOException {
+	private void initialize_news(String path)throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/menu/news.html"));
 		writer.write("<!-- Main -->\r\n" + 
 				"			<div id=\"main\" class=\"container\">\r\n" + 
@@ -107,6 +108,37 @@ public class ContentController {
 				"			</div>\r\n" + 
 				"			<!-- Main -->");
 		
+		writer.close();
+		
+	}
+	
+	//initialize products page
+	private void initialize_products(ArrayList<Products> productsarray,String path)throws IOException {
+		ArrayList<String> brandlist = analyzebrands(productsarray);
+		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/menu/products.html"));
+		writer.write("<!-- Main -->\r\n" + 
+				"			<div id=\"main\" class=\"container\">\r\n" + 
+				"				<div class=\"row\">\r\n" + 
+				"					<div id=\"side\" class=\"2u\">\r\n");
+		String side = readFile(path+"/productsmenu/brandmenu.html",StandardCharsets.UTF_8);
+		writer.write(side+"\r\n");
+		writer.write("</div>\r\n" + 
+				"<div id=\"side2\" class=\"2u\">\r\n");
+		String side2 = readFile(path+"/productsmenu/"+brandlist.get(0)+".html",StandardCharsets.UTF_8);
+		writer.write(side2+"\r\n");
+		writer.write("</div>\r\n" + 
+				"				\r\n" + 
+				"					<div class=\"6u skel-cell-important\">\r\n" + 
+				"						<section id=\"brandcontent\"><header>\r\n");
+		ArrayList<Products> itembybrand = (ArrayList<Products>)productsrepo.findByBrand(brandlist.get(0));
+		String content = readFile(path+"/products/products"+itembybrand.get(0).getPid()+".html",StandardCharsets.UTF_8);
+		writer.write(content+"\r\n");
+		writer.write("</section>\r\n" + 
+				"					</div>\r\n" + 
+				"					\r\n" + 
+				"				</div>\r\n" + 
+				"			</div>\r\n" + 
+				"			<!-- Main -->");
 		writer.close();
 		
 	}
