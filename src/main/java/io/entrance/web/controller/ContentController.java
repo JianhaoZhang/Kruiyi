@@ -223,7 +223,7 @@ public class ContentController {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/productsmenu/brandmenu.html"));
 		writer.write("<section class=\"sidebar\">\r\n" + 
 				"							<header>\r\n" + 
-				"								<h2>News Menu</h2>\r\n" + 
+				"								<h2>Brand Menu</h2>\r\n" + 
 				"							</header>\r\n" + 
 				"							<ul class=\"style1\">\r\n");
 		for (int i=0;i<brandlist.size();i++) {
