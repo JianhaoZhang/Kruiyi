@@ -38,7 +38,7 @@ public class News {
 	private String date;
 	
 	@NotEmpty(message = "Entry cannot be left blank")
-	@Column(columnDefinition="varchar(65536)")
+	@Column(columnDefinition="text")
 	private String body;
 	
 	public String getTitle() {

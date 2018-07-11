@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import antlr.collections.List;
 import io.entrance.web.model.News;
@@ -38,28 +39,38 @@ public class ContentController {
 	private ProductsRepo productsrepo;
 	
 	@RequestMapping(value="/news", method = RequestMethod.POST)
-	private String newsimport(@ModelAttribute("newsform") News news, Model model) {
+	private String newsimport(@RequestParam("id") long id,@ModelAttribute("newsform") News news, Model model) {
 		System.out.println("posting news");
 		
-		if (news.getId()==0) {
+		if (id==0) {
 			News instance = new News(news.getTitle(),news.getDate(),news.getBody());
 			this.newsrepo.save(instance);
 		}else {
-			this.newsrepo.save(news);
+			News instance = newsrepo.findById(id).get(0);
+			instance.setBody(news.getBody());
+			instance.setDate(news.getDate());
+			instance.setTitle(news.getTitle());
+			this.newsrepo.save(instance);
 		}
 		
 		return "redirect:/dashboard";
 	}
 	
 	@RequestMapping(value="/products", method = RequestMethod.POST)
-	private String newsimport(@ModelAttribute("productsform") Products products, Model model) {
+	private String newsimport(@RequestParam("pid") long pid, @ModelAttribute("productsform") Products products, Model model) {
 		System.out.println("posting news");
 		
-		if (products.getPid()==0) {
+		if (pid==0) {
 			Products instance = new Products(products.getName(),products.getBrand(),products.getType(),products.getDescription(),products.getPath());
 			this.productsrepo.save(instance);
 		}else {
-			this.productsrepo.save(products);
+			Products instance = productsrepo.findByPid(pid).get(0);
+			instance.setName(products.getName());
+			instance.setBrand(products.getBrand());
+			instance.setDescription(products.getDescription());
+			instance.setType(products.getType());
+			instance.setPath(products.getPath());
+			this.productsrepo.save(instance);
 		}
 		
 		return "redirect:/dashboard";

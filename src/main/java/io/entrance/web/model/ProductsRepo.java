@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface ProductsRepo extends JpaRepository<Products,Long> {
 	
 	List<Products> findAll();
-	List<Products> findByPid(String id);
+	List<Products> findByPid(long id);
 	List<Products> findByBrand(String brand);
 
 }

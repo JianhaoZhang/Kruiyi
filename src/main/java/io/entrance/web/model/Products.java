@@ -40,7 +40,7 @@ public class Products {
 	
 
 	@NotEmpty(message = "Entry cannot be left blank")
-	@Column(columnDefinition="varchar(65536)")
+	@Column(columnDefinition="text")
 	private String description;
 	
 	@NotEmpty(message = "Entry cannot be left blank")

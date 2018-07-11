@@ -10,6 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface NewsRepo extends JpaRepository<News,Long> {
 	
 	List<News> findAll();
-	List<News> findById(String id);
+	List<News> findById(long id);
 
 }

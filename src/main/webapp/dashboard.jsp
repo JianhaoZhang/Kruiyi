@@ -39,7 +39,7 @@
 		}
 		
 		function validate_product() {
-			var value = document.getElementById("id").value;
+			var value = document.getElementById("pid").value;
 			var name = document.getElementById("name").value;
 			var brand = document.getElementById("brand").value;
 			var type = document.getElementById("type").value;
@@ -78,7 +78,7 @@
   	<div class="w3-container  w3-white w3-padding w3-card" style="letter-spacing:4px;">
     <form id="newsform" onsubmit="return validate();" name="newsform" action="news" method="post">
     	<p><h2>News</h2></p>
-        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="PID" id="pid" name="pid"/></p>
+        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="ID" id="id" name="id"/></p>
         <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Title" id="title" name="title"/></p>
         <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="Date" id="date" name="date"/></p>
         <p><textarea class="w3-input w3-padding-16"  required = "required" placeholder="Body" id="body" name="body"></textarea></p>
