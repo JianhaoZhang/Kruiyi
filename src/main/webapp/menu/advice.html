@@ -1,0 +1,38 @@
+﻿<div class="w3-row">
+	  	<div class="w3-third"><div class="w3-container"></div></div>
+		  	<div class="w3-third">
+		  		<div class="w3-container w3-teal">
+		  		<h2 class="w3-xxlarge w3-padding-16"><b>留言表格：</b></h2>
+		  		</div>
+			  	<div class="w3-container w3-center w3-padding w3-card" style="letter-spacing:4px;">
+				    <form method="post" action="getadvice">
+				    <BR>
+				      <label class="w3-text-teal w3-left"><b>客户名称：</b></label> <input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="name"><BR>
+				      <label class="w3-text-teal w3-left"><b>公司名称： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="company"><BR>
+				      <label class="w3-text-teal w3-left"><b>职  位： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="position"><BR>
+				      <label class="w3-text-teal"><b>性  别：</b></label>
+				      	<input class="w3-radio" type="radio" name="sex" value="male" checked>
+						<label>先生</label>
+						<input class="w3-radio" type="radio" name="sex" value="female">
+						<label>女士</label><BR><BR><BR>
+				     <label class="w3-text-teal w3-left"><b> 联系地址： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="address"><BR>
+				     <label class="w3-text-teal w3-left"><b> 联系电话： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="tel"><BR>
+				      <label class="w3-text-teal w3-left"><b>邮政编码： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="zip"><BR>
+				      <label class="w3-text-teal w3-left"><b>网  址： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="website"><BR>
+				      <label class="w3-text-teal w3-left"><b>手  机： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="mobile"><BR>
+				      <label class="w3-text-teal w3-left"><b>传  真： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="fax"><BR>
+				      <label class="w3-text-teal w3-left"><b>电子邮件： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="email"><BR>
+				      <label class="w3-text-teal w3-left"><b>联系事项： </b></label><select class="w3-select w3-padding-16 w3-content" type="text" required="required" name="matter">
+				      <option value="" disabled selected>点击选择</option>
+  						<option value="合作代理">合作代理</option>
+  						<option value="订购产品">订购产品</option>
+  						<option value="技术支持">技术支持</option>
+  						<option value="仅留言">仅留言</option>
+				      </select><BR><BR>
+				      <label class="w3-text-teal w3-left"><b>意见说明： </b></label><input class="w3-input w3-padding-16 w3-content" type="text" required="required" name="body"><BR>
+				      <button class="w3-button w3-light-grey w3-section" type="submit" >提交</button>
+				    </form>
+			    </div>
+		    </div>
+	    <div class="w3-third"><div class="w3-container"></div></div>
+	</div>
