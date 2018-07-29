@@ -159,7 +159,7 @@ public class ContentController {
 		writer.write("</div>\r\n" + 
 				"				\r\n" + 
 				"					<div class=\"6u skel-cell-important\">\r\n" + 
-				"						<section id=\"brandcontent\"><header>\r\n");
+				"						<section id=\"brandcontent\">\r\n");
 		ArrayList<Products> itembybrand = (ArrayList<Products>)productsrepo.findByBrand(brandlist.get(0));
 		String content = readFile(path+"/products/products"+itembybrand.get(0).getPid()+".html",StandardCharsets.UTF_8);
 		writer.write(content+"\r\n");
@@ -193,7 +193,8 @@ public class ContentController {
 		Products temp = productsarray.get(i);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/products/products"+temp.getPid()+".html"));
 		writer.write("<header>\r\n<h2>"+temp.getName()+"</h2>\r\n<span class=\"byline\">"+temp.getBrand()+"</span>\r\n</header>\r\n");
-		writer.write(temp.getDescription());
+		writer.write(temp.getDescription()+"<BR/>");
+		writer.write("<a href=\""+"pdf/"+temp.getPath()+"\">"+"产品文档："+temp.getPath()+"</a>");
 		writer.close();
 		}
 		

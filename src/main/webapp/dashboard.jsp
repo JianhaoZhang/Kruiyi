@@ -2,7 +2,6 @@
   <head>
   <link rel="stylesheet" href="/css/w3.css"></link>
     <title>Kruiyi Control Panel</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 		body {font-family: "Times New Roman", Georgia, Serif;
 		}
