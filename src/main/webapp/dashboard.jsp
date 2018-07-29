@@ -109,14 +109,29 @@
     	<p class="w3-row">
     	<a href="/logout" class="w3-button w3-blue w3-padding-large" >Log off</a>
     	<a href="/render" class="w3-button w3-indigo w3-padding-large">Re-render</a>
-    	<a href="/clean" class="w3-button w3-red w3-padding-large">*Purge</a>
+    	<a href="/purge" class="w3-button w3-red w3-padding-large">*Purge</a>
   		</p>
     </div>
     </div>
     <div class="w3-half">
   	<div class="w3-container  w3-white w3-padding w3-card" style="letter-spacing:4px;">
     
-    	<p><h2>TBD</h2></p>
+    	<p><h2>Upload files</h2></p>
+    	<p>
+    	<form class="w3-container" method="POST" action="/image" enctype="multipart/form-data">
+    		<label>Upload Image</label>
+    		<input class="w3-input" type="file" name="image" />
+    		<input class="w3-input" type="submit" value="Submit" />
+		</form>
+		</p>
+		
+		<p>
+    	<form class="w3-container" method="POST" action="/pdf" enctype="multipart/form-data">
+    		<label>Upload PDF</label>
+    		<input class="w3-input" type="file" name="pdf" />
+    		<input class="w3-input" type="submit" value="Submit" />
+		</form>
+		</p>
 
     </div>
     </div>

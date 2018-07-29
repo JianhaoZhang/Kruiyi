@@ -1,6 +1,7 @@
 package io.entrance.web.controller;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -13,6 +14,7 @@ import java.util.LinkedHashSet;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -91,6 +93,23 @@ public class ContentController {
 		create_products_menu(productsarray,phyPath);
 		initialize_products(productsarray,phyPath);
 		
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/purge")
+	private String purge(HttpServletRequest request) {
+		String phyPath = request.getSession().getServletContext().getRealPath("/");
+		try {
+			FileUtils.cleanDirectory(new File(phyPath+"/newsmenu"));
+			FileUtils.cleanDirectory(new File(phyPath+"/news"));
+			FileUtils.cleanDirectory(new File(phyPath+"/productsmenu"));
+			FileUtils.cleanDirectory(new File(phyPath+"/products"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("purge failed");
+			e.printStackTrace();
+		}
 		
 		return "redirect:/";
 	}
