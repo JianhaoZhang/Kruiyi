@@ -15,7 +15,17 @@
 	body
 	{
 		background: #202020 url(images/img01.jpg) repeat;
+		min-width:1200px;        /* Suppose you want minimum width of 1000px */
+		width: auto !important;  /* Firefox will set width as auto */
+		width:1200px;            /* As IE6 ignores !important it will set width as 1000px; */
+		overflow: auto;
 		
+	}
+	
+	html
+	{
+		min-width: 1200px;
+		overflow: auto;
 	}
 
 	body,input,textarea,select
@@ -285,7 +295,7 @@
 			
 		ul.style5
 		{
-			overflow: hidden;
+			overflow: auto;
 			margin: 0em 0em 1em 0em;
 			padding: 0em;
 			list-style: none;
@@ -773,7 +783,7 @@
 		#header .container
 		{
 			position: relative;
-			padding: 5em 0em;
+			padding: 4em 0em;
 		}
 
 /*********************************************************************************/
@@ -789,14 +799,37 @@
 	
 		#logo h1
 		{
+			float: left;
+			font-size: 2em;
+			font-weight: 600;
+			padding-left : 0.5em;
+		}
+		
+		#logo h2
+		{
+			float: left;
+			font-size: 1.2em;
+			font-weight: 300;
+			padding-left : 1em;
+			padding-top : 0.5em;
 		}
 	
 		#logo a
 		{
-			display: block;
+			position: relative;
+			
 			text-decoration: none;
-			font-size: 2.8em;
+			font-size: 2.4em;
 			font-weight: 600;
+		}
+		
+		#logo img
+		{
+			display: block;
+			float: left;
+  			width: 45px;
+  			height: 60px;
+			
 		}
 
 /*********************************************************************************/
@@ -806,8 +839,9 @@
 	#nav
 	{
 		position: absolute;
-		right: 0em;
+		left: 30em;
 		top: 2.2em;
+		overflow: auto;
 	}
 
 		#nav > ul > li
