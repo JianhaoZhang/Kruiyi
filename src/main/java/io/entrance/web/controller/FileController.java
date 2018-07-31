@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,11 +40,19 @@ public class FileController {
 	
 	@RequestMapping(value="/pdf", method = RequestMethod.POST)
 	private String upload_pdf(@RequestParam("pdf") MultipartFile pdf, HttpServletRequest request) throws IOException {
-		String phyPath = request.getSession().getServletContext().getRealPath("/");
-		String imgPath = phyPath+"/pdf/";
+		if (request.getCharacterEncoding()!=null) {
+			System.out.println(request.getCharacterEncoding());
+		}else {
+			System.out.println("null");
+		}
+	    String phyPath = request.getSession().getServletContext().getRealPath("/");
+		String pdfPath = phyPath+"/pdf/";
 		byte[] bytes = pdf.getBytes();
 		new File(phyPath+"/pdf").mkdirs();
-		Path path = Paths.get(imgPath + pdf.getOriginalFilename());
+		String filename = pdf.getOriginalFilename();
+		String realname = new StringEscapeUtils().unescapeHtml4(filename);
+		System.out.println(realname);
+		Path path = Paths.get(pdfPath + realname);
         Files.write(path, bytes);
         return "redirect:/dashboard";
 	}
@@ -53,7 +62,6 @@ public class FileController {
 	    @PathVariable("file_name") String fileName,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		String phyPath = request.getSession().getServletContext().getRealPath("/");
-	    
 	    File initialFile = new File(phyPath+"pdf/"+fileName+".pdf");
 	    System.out.println(phyPath+"pdf/\""+fileName+"\".pdf");
 	    InputStream is = new FileInputStream(initialFile);
