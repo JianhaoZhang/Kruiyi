@@ -2,6 +2,7 @@ package io.entrance.web.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -49,19 +50,18 @@ public class FileController {
 	
 	@RequestMapping(value = "/pdf/{file_name}", method = RequestMethod.GET)
 	public void getFile(
-	    @PathVariable("file_name") String fileName,HttpServletRequest request, HttpServletResponse response) {
+	    @PathVariable("file_name") String fileName,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		String phyPath = request.getSession().getServletContext().getRealPath("/");
-	    try {
+	    
 	    File initialFile = new File(phyPath+"pdf/"+fileName+".pdf");
 	    System.out.println(phyPath+"pdf/\""+fileName+"\".pdf");
 	    InputStream is = new FileInputStream(initialFile);
+	    is.close();
 	    org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
 	    response.flushBuffer();
 	    response.setContentType("application/pdf");
-	    } catch (IOException ex) {
-	      throw new RuntimeException("IOError writing file to output stream");
-	    }
+	    
 
 	}
 	
