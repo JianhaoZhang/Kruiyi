@@ -30,6 +30,7 @@ public class FileController {
 		String phyPath = request.getSession().getServletContext().getRealPath("/");
 		String imgPath = phyPath+"/img/";
 		byte[] bytes = img.getBytes();
+		new File(phyPath+"/img").mkdirs();
 		Path path = Paths.get(imgPath + img.getOriginalFilename());
         Files.write(path, bytes);
         return "redirect:/dashboard";
@@ -40,6 +41,7 @@ public class FileController {
 		String phyPath = request.getSession().getServletContext().getRealPath("/");
 		String imgPath = phyPath+"/pdf/";
 		byte[] bytes = pdf.getBytes();
+		new File(phyPath+"/pdf").mkdirs();
 		Path path = Paths.get(imgPath + pdf.getOriginalFilename());
         Files.write(path, bytes);
         return "redirect:/dashboard";
