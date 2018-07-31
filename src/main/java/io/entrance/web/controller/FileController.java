@@ -53,8 +53,8 @@ public class FileController {
 		
 		String phyPath = request.getSession().getServletContext().getRealPath("/");
 	    try {
-	    File initialFile = new File(phyPath+"pdf\\"+fileName+".pdf");
-	    System.out.println(phyPath+"pdf\\"+fileName+".pdf");
+	    File initialFile = new File(phyPath+"pdf/"+fileName+".pdf");
+	    System.out.println(phyPath+"pdf/"+fileName+".pdf");
 	    InputStream is = new FileInputStream(initialFile);
 	    org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
 	    response.flushBuffer();
