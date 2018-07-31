@@ -57,7 +57,6 @@ public class FileController {
 	    File initialFile = new File(phyPath+"pdf/"+fileName+".pdf");
 	    System.out.println(phyPath+"pdf/\""+fileName+"\".pdf");
 	    InputStream is = new FileInputStream(initialFile);
-	    is.close();
 	    org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
 	    response.flushBuffer();
 	    response.setContentType("application/pdf");
