@@ -53,7 +53,11 @@ public class FileController {
 		String realname = new StringEscapeUtils().unescapeHtml4(filename);
 		System.out.println(realname);
 		Path path = Paths.get(pdfPath + realname);
-        Files.write(path, bytes);
+		synchronized(realname) {
+			if (realname!=null) {
+				Files.write(path, bytes);
+			}
+		}
         return "redirect:/dashboard";
 	}
 	
