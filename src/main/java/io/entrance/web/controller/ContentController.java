@@ -128,8 +128,11 @@ public class ContentController {
 				"				\r\n" + 
 				"					<div class=\"9u skel-cell-important\">\r\n" + 
 				"						<section id=\"newscontent\">");
-		
-		String article = readFile(path+"/news/news1.html",StandardCharsets.UTF_8);
+		ArrayList<News> q = (ArrayList)newsrepo.findAll();
+		int last = q.size();
+		long tlast = q.get(last-1).getId();
+		System.out.println("tlast = "+tlast);
+		String article = readFile(path+"/news/news"+tlast+".html",StandardCharsets.UTF_8);
 		writer.write(article+"\r\n");
 		writer.write("</section>\r\n" + 
 				"					</div>\r\n" + 
