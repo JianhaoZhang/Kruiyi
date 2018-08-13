@@ -15,16 +15,16 @@
 	body
 	{
 		background: #202020 url(images/img01.jpg) repeat;
-		min-width:1200px;        /* Suppose you want minimum width of 1000px */
+		min-width:1500px;        /* Suppose you want minimum width of 1000px */
 		width: auto !important;  /* Firefox will set width as auto */
-		width:1200px;            /* As IE6 ignores !important it will set width as 1000px; */
+		width:1500px;            /* As IE6 ignores !important it will set width as 1000px; */
 		overflow: auto;
 		
 	}
 	
 	html
 	{
-		min-width: 1200px;
+		min-width: 1500px;
 		overflow: auto;
 	}
 
