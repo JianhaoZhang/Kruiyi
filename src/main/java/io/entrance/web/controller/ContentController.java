@@ -237,7 +237,7 @@ public class ContentController {
 		
 		for (int i=0; i<pages;i++) {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/newsmenu/newsmenu"+(i+1)+".html"));
-			writer.write("<section class=\"sidebar\">\r\n" + 
+			writer.write("<div class =\"w3-animate-opacity\"><section class=\"sidebar\">\r\n" + 
 					"							<header>\r\n" + 
 					"								<h2>News Menu</h2>\r\n" + 
 					"							</header>\r\n" + 
@@ -260,7 +260,7 @@ public class ContentController {
 				writer.write("<button onclick=\"loadDoc('newsmenu/newsmenu"+(k+1)+"','side')\">"+(k+1)+"</button>\r\n");
 			}
 			
-			writer.write("</section>");
+			writer.write("</section></div>");
 			
 			writer.close();
 		}
@@ -280,7 +280,7 @@ public class ContentController {
 	//create sidebar by brand
 	private void create_brand_sidebar(ArrayList<String> brandlist,String path) throws IOException{
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/productsmenu/brandmenu.html"));
-		writer.write("<section class=\"sidebar\">\r\n" + 
+		writer.write("<div class =\"w3-animate-opacity\"><section class=\"sidebar\">\r\n" + 
 				"							<header>\r\n" + 
 				"								<h2>Brand Menu</h2>\r\n" + 
 				"							</header>\r\n" + 
@@ -289,7 +289,7 @@ public class ContentController {
 			writer.write("<li><a href=\"#\" onclick=\"loadDoc('productsmenu/"+brandlist.get(i)+"','side2')\">"+brandlist.get(i)+"</a></li>\r\n");
 		}
 		
-		writer.write("</section>");
+		writer.write("</section></div>");
 		
 		writer.close();
 	}
@@ -298,7 +298,7 @@ public class ContentController {
 		for (String brand : brandlist) {
 			ArrayList<Products> productsbrandarray = (ArrayList<Products>)productsrepo.findByBrand(brand);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/productsmenu/"+brand+".html"));
-			writer.write("<section class=\"sidebar\">\r\n" + 
+			writer.write("<div class =\"w3-animate-opacity\"><section class=\"sidebar\">\r\n" + 
 					"							<header>\r\n" + 
 					"								<h2>Item Menu</h2>\r\n" + 
 					"							</header>\r\n" + 
@@ -307,7 +307,7 @@ public class ContentController {
 				writer.write("<li><a href=\"#\" onclick=\"loadDoc('products/products"+p.getPid()+"','brandcontent')\">"+p.getName()+"</a></li>\r\n");
 			}
 			
-			writer.write("</section>\r\n");
+			writer.write("</section></div>\r\n");
 			writer.close();
 		}
 	}

@@ -1,7 +1,7 @@
 <html>
   <head>
   <link rel="stylesheet" href="/css/w3.css"></link>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%> 
     <title>Kruiyi Control Panel</title>
     <style>
 		body {font-family: "Times New Roman", Georgia, Serif;
