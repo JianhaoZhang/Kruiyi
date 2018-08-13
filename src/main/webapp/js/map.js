@@ -18,21 +18,11 @@
 	        map5.centerAndZoom(new BMap.Point(112.918846,28.208413),17);
 	      }
 	      function setMapEvent(){
-	        map1.enableScrollWheelZoom();
-	        map1.enableDragging();
-	        map1.enableDoubleClickZoom();
-	        map2.enableScrollWheelZoom();
-	        map2.enableDragging();
-	        map2.enableDoubleClickZoom();
-	        map3.enableScrollWheelZoom();
-	        map3.enableDragging();
-	        map3.enableDoubleClickZoom();
-	        map4.enableScrollWheelZoom();
-	        map4.enableDragging();
-	        map4.enableDoubleClickZoom();
-	        map5.enableScrollWheelZoom();
-	        map5.enableDragging();
-	        map5.enableDoubleClickZoom();
+	    	  var maps = [map1,map2,map3,map4,map5];
+	    	  for(var index = 0; index < 5; index++ ){
+	    		  maps[index].enableScrollWheelZoom();
+	    		  maps[index].enableDragging();
+	    	  }
 	      }
 	      function addClickHandler(target,window){
 	        target.addEventListener("click",function(){
@@ -61,19 +51,16 @@
 	        var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
 	        scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
 	        var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
-	        map1.addControl(scaleControl);
-	        map1.addControl(navControl);
-	        map2.addControl(scaleControl);
-	        map2.addControl(navControl);
-	        map3.addControl(scaleControl);
-	        map3.addControl(navControl);
-	        map4.addControl(scaleControl);
-	        map4.addControl(navControl);
-	        map5.addControl(scaleControl);
-	        map5.addControl(navControl);
+	        var maps = [map1,map2,map3,map4,map5];
+	        for(var index = 0; index < 5; index++ ){
+		    	maps[index].addControl(scaleControl);
+		    	maps[index].addControl(navControl);
+		    }
 	      }
 	    var map1;
 	    var map2;
 	    var map3;
 	    var map4;
 	    var map5;
+	    var names = ["map1","map2","map3","map4","map5"];
+	    
