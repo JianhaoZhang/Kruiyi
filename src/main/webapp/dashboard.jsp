@@ -132,6 +132,17 @@
     		<input class="w3-input" type="submit" value="Submit" />
 		</form>
 		</p>
+		
+		<form id="delecproductform" name="delete" action="delete" method="post">
+    	<p><h2>Products</h2></p>
+        <p><input class="w3-input w3-padding-16" type="text" required = "required" placeholder="PID OR PID" id="id" name="id"/></p>
+        <select class="w3-select w3-padding-16 w3-content" type="text" required="required" id="type" name="type">
+				      <option value="" disabled selected>Choose deletion type</option>
+  						<option value="product">Products</option>
+  						<option value="new">News</option>
+		</select>
+    	<p><button class="w3-button w3-light-grey w3-padding-large" type="submit" id="submitbutton" name="submitbutton"  />Submit</p>
+    </form>
 
     </div>
     </div>

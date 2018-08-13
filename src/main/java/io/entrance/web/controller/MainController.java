@@ -66,7 +66,7 @@ public class MainController {
 	@RequestMapping("/dashboard")
 	public String dashboard(Model model,HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
 		Cookie[] cookies = request.getCookies();
-		if (cookies.length>1) {
+		if (cookies!=null && cookies.length>1) {
 			String encoded = "";
 			String name = "";
 			for (int i=0;i<cookies.length;i++) {

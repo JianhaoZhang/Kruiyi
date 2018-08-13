@@ -48,11 +48,20 @@ public class ContentController {
 			News instance = new News(news.getTitle(),news.getDate(),news.getBody());
 			this.newsrepo.save(instance);
 		}else {
+			if (newsrepo.findById(id).size()!=0) {
 			News instance = newsrepo.findById(id).get(0);
 			instance.setBody(news.getBody());
 			instance.setDate(news.getDate());
 			instance.setTitle(news.getTitle());
 			this.newsrepo.save(instance);
+			}else {
+				News instance = new News();
+				instance.setId(id);
+				instance.setBody(news.getBody());
+				instance.setDate(news.getDate());
+				instance.setTitle(news.getTitle());
+				this.newsrepo.save(instance);
+			}
 		}
 		
 		return "redirect:/dashboard";
@@ -75,6 +84,18 @@ public class ContentController {
 			this.productsrepo.save(instance);
 		}
 		
+		return "redirect:/dashboard";
+	}
+	
+	@RequestMapping(value="/delete", method = RequestMethod.POST)
+	private String deletion(@RequestParam("id") long id,@RequestParam("type") String type, Model model) {
+		if (type.equals("product")) {
+			productsrepo.delete(id);
+		}else if (type.equals("new")){
+			newsrepo.delete(id);
+		}else {
+			System.out.println("DELETION ERROR");
+		}
 		return "redirect:/dashboard";
 	}
 	
@@ -105,6 +126,8 @@ public class ContentController {
 			FileUtils.cleanDirectory(new File(phyPath+"/news"));
 			FileUtils.cleanDirectory(new File(phyPath+"/productsmenu"));
 			FileUtils.cleanDirectory(new File(phyPath+"/products"));
+			Files.deleteIfExists(new File(phyPath+"/menu/news.html").toPath());
+			Files.deleteIfExists(new File(phyPath+"/menu/products.html").toPath());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("purge failed");
@@ -116,17 +139,18 @@ public class ContentController {
 	
 	//initialize news page
 	private void initialize_news(String path)throws IOException {
+		Files.deleteIfExists(new File(path+"/menu/news.html").toPath());
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/menu/news.html"));
 		writer.write("<!-- Main -->\r\n" + 
 				"			<div id=\"main\" class=\"container\">\r\n" + 
 				"				<div class=\"row\">\r\n" + 
-				"					<div id=\"side\" class=\"3u\">\r\n");
+				"					<div id=\"side\" class=\"3u w3-animate-right\">\r\n");
 		
 		String side = readFile(path+"/newsmenu/newsmenu1.html",StandardCharsets.UTF_8);
 		writer.write(side+"\r\n");
 		writer.write("</div>\r\n" + 
 				"				\r\n" + 
-				"					<div class=\"9u skel-cell-important\">\r\n" + 
+				"					<div class=\"9u skel-cell-important w3-animate-left\">\r\n" + 
 				"						<section id=\"newscontent\">");
 		ArrayList<News> q = (ArrayList)newsrepo.findAll();
 		int last = q.size();
@@ -147,21 +171,22 @@ public class ContentController {
 	
 	//initialize products page
 	private void initialize_products(ArrayList<Products> productsarray,String path)throws IOException {
+		Files.deleteIfExists(new File(path+"/menu/products.html").toPath());
 		ArrayList<String> brandlist = analyzebrands(productsarray);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/menu/products.html"));
 		writer.write("<!-- Main -->\r\n" + 
 				"			<div id=\"main\" class=\"container\">\r\n" + 
 				"				<div class=\"row\">\r\n" + 
-				"					<div id=\"side\" class=\"2u\">\r\n");
+				"					<div id=\"side\" class=\"2u w3-animate-right \">\r\n");
 		String side = readFile(path+"/productsmenu/brandmenu.html",StandardCharsets.UTF_8);
 		writer.write(side+"\r\n");
 		writer.write("</div>\r\n" + 
-				"<div id=\"side2\" class=\"2u\">\r\n");
+				"<div id=\"side2\" class=\"2u w3-animate-opacity\">\r\n");
 		String side2 = readFile(path+"/productsmenu/"+brandlist.get(0)+".html",StandardCharsets.UTF_8);
 		writer.write(side2+"\r\n");
 		writer.write("</div>\r\n" + 
 				"				\r\n" + 
-				"					<div class=\"6u skel-cell-important\">\r\n" + 
+				"					<div class=\"6u skel-cell-important w3-animate-left \">\r\n" + 
 				"						<section id=\"brandcontent\">\r\n");
 		ArrayList<Products> itembybrand = (ArrayList<Products>)productsrepo.findByBrand(brandlist.get(0));
 		String content = readFile(path+"/products/products"+itembybrand.get(0).getPid()+".html",StandardCharsets.UTF_8);
@@ -220,7 +245,7 @@ public class ContentController {
 			
 			for(int j=0;j<10;j++) {
 				if (counter>0) {
-					writer.write("<li><a href=\"#\" onclick=\"loadDoc('news/news"+counter+"','newscontent')\">"
+					writer.write("<li><a href=\"#\" onclick=\"loadDoc('news/news"+newsarray.get(counter-1).getId()+"','newscontent')\">"
 							+newsarray.get(counter-1).getTitle()+"</a></li>\r\n");
 					counter-=1;
 				}else {
