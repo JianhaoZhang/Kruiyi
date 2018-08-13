@@ -207,8 +207,8 @@ public class ContentController {
 		for (int i=0; i<newsarray.size();i++) {
 		News temp = newsarray.get(i);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/news/news"+temp.getId()+".html"));
-		writer.write("<header>\r\n<h2>"+temp.getTitle()+"</h2>\r\n<span class=\"byline\">"+temp.getDate()+"</span>\r\n</header>\r\n");
-		writer.write(temp.getBody());
+		writer.write("<div class= \"w3-animate-opacity\"><header>\r\n<h2>"+temp.getTitle()+"</h2>\r\n<span class=\"byline\">"+temp.getDate()+"</span>\r\n</header>\r\n");
+		writer.write(temp.getBody()+"</div>");
 		writer.close();
 		}
 		
@@ -220,9 +220,9 @@ public class ContentController {
 		for (int i=0; i<productsarray.size();i++) {
 		Products temp = productsarray.get(i);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/products/products"+temp.getPid()+".html"));
-		writer.write("<header>\r\n<h2>"+temp.getName()+"</h2>\r\n<span class=\"byline\">"+temp.getBrand()+"</span>\r\n</header>\r\n");
+		writer.write("<div class= \"w3-animate-opacity\"><header>\r\n<h2>"+temp.getName()+"</h2>\r\n<span class=\"byline\">"+temp.getBrand()+"</span>\r\n</header>\r\n");
 		writer.write(temp.getDescription()+"<BR/>");
-		writer.write("<a href=\""+"pdf/"+temp.getPath()+"\">"+"产品文档："+temp.getPath()+"</a>");
+		writer.write("<a href=\""+"pdf/"+temp.getPath()+"\">"+"产品文档："+temp.getPath()+"</a></div>");
 		writer.close();
 		}
 		
