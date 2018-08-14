@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -23,6 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @EnableAutoConfiguration
 public class MailController {
 	
+
+@Value("${spring.mail.username}")
+private String from;
+
 	@Autowired
 	private JavaMailSender agent;
 	
@@ -39,12 +44,15 @@ public class MailController {
 			stemp = "女士";
 		}
 		
+		 
+		
 		help.setTo("jonah@kruiyi.com");
-		help.setText("<p>"+company+" 客户意见反馈: </p>"+
+		help.setFrom(from);
+		help.setText("<b><p>"+company+" 客户意见反馈: </p></b>"+
 				"<p>来自 "+ name + " "+stemp+ " ("+ position +")"+"</p>"+
 				"<p>内容: "+matter+"</p>"+
 				"<p>详情: "+body+"</p>"+
-				"<p>联系方式:</p>" +
+				"<b><p>联系方式:</p></b>" +
 				"<p>邮箱: "+ email +"</p>" +
 				"<p>地址: "+ address +"</p>" +
 				"<p>邮编: "+ zip +"</p>" +
