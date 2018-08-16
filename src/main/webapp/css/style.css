@@ -15,16 +15,16 @@
 	body
 	{
 		background: #202020 url(images/img01.jpg) repeat;
-		min-width:1500px;        /* Suppose you want minimum width of 1000px */
+		min-width:1400px;        /* Suppose you want minimum width of 1000px */
 		width: auto !important;  /* Firefox will set width as auto */
-		width:1500px;            /* As IE6 ignores !important it will set width as 1000px; */
+		width:1400px;            /* As IE6 ignores !important it will set width as 1000px; */
 		overflow: auto;
 		
 	}
 	
 	html
 	{
-		min-width: 1500px;
+		min-width: 1600px;
 		overflow: auto;
 	}
 
@@ -162,6 +162,54 @@
 		.row > article
 		{
 			
+		}
+		
+	/* Photo Banner */
+		.photo-roll--container {
+		  color: #fff;
+		  overflow: hidden;
+		}
+		
+		.photo-roll {
+		  height: 300px;
+		  width: 3550px;
+		  font-size: 0;
+		}
+
+		
+		.photo-roll img {
+		  margin-right: 5px;
+		  height: 300px;
+		  width: 350px;
+		  transition: all 0.5s ease;
+		}
+		
+		.photo-roll img:hover {
+		  -webkit-transform: scale(1.5);
+		          transform: scale(1.5);
+		  cursor: pointer;
+		}
+		.photo-roll a:first-child {
+		  -webkit-animation: bannermove 30s linear infinite;
+		          animation: bannermove 30s linear infinite;
+		}
+		
+		/* Keyframe animations*/
+		@-webkit-keyframes "bannermove" {
+		  0% {
+		    margin-left: 0px;
+		  }
+		  100% {
+		    margin-left: -2125px;
+		  }
+		}
+		@keyframes "bannermove" {
+		  0% {
+		    margin-left: 0px;
+		  }
+		  100% {
+		    margin-left: -2125px;
+		  }
 		}
 
 	/* Images */
@@ -800,7 +848,7 @@
 		#logo h1
 		{
 			float: left;
-			font-size: 2em;
+			font-size: 1.8em;
 			font-weight: 600;
 			padding-left : 0.5em;
 		}
@@ -887,7 +935,7 @@
 	#banner
 	{
 		position: relative;
-		padding: 6em 0em;
+		padding: 0em 0em;
 		background: url(../images/banner.jpg) no-repeat center;
 		background-size: cover;
 		color: #fff;
