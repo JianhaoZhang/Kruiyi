@@ -176,8 +176,8 @@
 		  font-size: 0;
 		  -webkit-animation-play-state: running;
 		  		  animation-play-state: running;
-		  -webkit-animation: bannermove 40s linear infinite;
-		          animation: bannermove 40s linear infinite;
+		  -webkit-animation: bannermove 45s linear infinite;
+		          animation: bannermove 45s linear infinite;
 		}
 		
 		.photo-roll img {
