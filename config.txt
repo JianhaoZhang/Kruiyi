@@ -1,0 +1,4 @@
+server.ssl.key-store: classpath:keystore.p12
+server.ssl.key-store-password: kemet123
+server.ssl.keyStoreType: PKCS12
+server.ssl.keyAlias: tomcat
