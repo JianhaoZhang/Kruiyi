@@ -76,4 +76,15 @@ public class FileController {
 
 	}
 	
+	@RequestMapping(value = "/.well-known/pki-validation/D442EBF1CB0F460A09718EB0FA163306.txt", method = RequestMethod.GET)
+	public void getValid( HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		String phyPath = request.getSession().getServletContext().getRealPath("/");
+	    File initialFile = new File(phyPath+"menu/"+"D442EBF1CB0F460A09718EB0FA163306.txt");
+	    InputStream is = new FileInputStream(initialFile);
+	    org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
+	    response.flushBuffer();
+	    
+	}
+	
 }
