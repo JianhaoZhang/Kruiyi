@@ -174,8 +174,11 @@
 		  height: 200px;
 		  width: 3550px;
 		  font-size: 0;
+		  -webkit-animation-play-state: running;
+		  		  animation-play-state: running;
+		  -webkit-animation: bannermove 40s linear infinite;
+		          animation: bannermove 40s linear infinite;
 		}
-
 		
 		.photo-roll img {
 		  margin-right: 5px;
@@ -189,10 +192,12 @@
 		          transform: scale(1.5);
 		  cursor: pointer;
 		}
-		.photo-roll a:first-child {
-		  -webkit-animation: bannermove 30s linear infinite;
-		          animation: bannermove 30s linear infinite;
+		
+		.photo-roll:hover{
+			-webkit-animation-play-state: paused;
+					animation-play-state: paused;
 		}
+		
 		
 		/* Keyframe animations*/
 		@-webkit-keyframes "bannermove" {
