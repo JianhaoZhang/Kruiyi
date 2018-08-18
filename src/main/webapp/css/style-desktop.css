@@ -23,7 +23,7 @@
 
 	#banner
 	{
-		padding: 0em 0em;
+		padding: 2em 0em;
 	}
 
 	.homepage #banner
@@ -37,12 +37,12 @@
 
 	#page
 	{
-		padding: 2em 0em 6em 0em;
+		padding: 1em 0em 1em 0em;
 	}
 	
 	.homepage #page
 	{
-		padding: 2em 0em;
+		padding-left:2em;
 	}
 
 	#main
@@ -73,12 +73,12 @@
 	
 	#featured
 	{
-		padding: 4em 0em;
+		padding: 0em 0em;
 	}
 
 	
 	#featured .divider
 	{
-		padding: 2em 0em;
+		padding: 1em 0em;
 	}
 	

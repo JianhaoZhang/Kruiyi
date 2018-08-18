@@ -15,11 +15,11 @@
 /* Container */
 
 	body {
-		min-width: 1200px;
+		min-width: 1000px;
 	}
 
 	.container {
-		width: 1200px;
+		width: 1000px;
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -32,8 +32,8 @@
 
 		.container.big {
 			width: 100%;
-			max-width: 1500px;
-			min-width: 1200px;
+			max-width: 1000px;
+			min-width: 1000px;
 		}
 
 /* Grid */
@@ -65,7 +65,7 @@
 		.\-1u { margin-left: 8.3333333333% }
 
 		.row > * {
-			padding: 50px 0 0 50px;
+			padding: 0px;
 			float: left;
 			-moz-box-sizing: border-box;
 			-webkit-box-sizing: border-box;
@@ -75,11 +75,11 @@
 		}
 
 		.row + .row > * {
-			padding-top: 50px;
+			padding-top: 0px;
 		}
 
 		.row {
-			margin-left: -50px;
+			margin-left: 0px;
 		}
 
 	/* Rows */

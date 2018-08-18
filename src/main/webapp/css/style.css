@@ -15,16 +15,16 @@
 	body
 	{
 		background: #202020 url(images/img01.jpg) repeat;
-		min-width:1400px;        /* Suppose you want minimum width of 1000px */
+		min-width:1200px;        /* Suppose you want minimum width of 1000px */
 		width: auto !important;  /* Firefox will set width as auto */
-		width:1400px;            /* As IE6 ignores !important it will set width as 1000px; */
+		width:1200px;            /* As IE6 ignores !important it will set width as 1000px; */
 		overflow: auto;
 		
 	}
 	
 	html
 	{
-		min-width: 1600px;
+		min-width: 1200px;
 		overflow: auto;
 	}
 
@@ -33,7 +33,7 @@
 		font-family: 'Roboto Condensed', sans-serif;
 		font-weight: 300;
 		font-size: 11pt;
-		line-height: 1.75em;
+		line-height: 1.55em;
 	}
 
 	h1
@@ -48,7 +48,7 @@
 	{
 		letter-spacing: 1px;
 		text-transform: uppercase;
-		font-weight: 100;
+		font-weight: 300;
 		font-size:5pt;
 	}
 	
@@ -105,12 +105,12 @@
 	
 	p, ul, ol, dl, table
 	{
-		margin-bottom: 1em;
+		margin-bottom: 0.7em;
 	}
 
 	header
 	{
-		margin-bottom: 2em;
+		margin-bottom: 1.5em;
 		line-height: 1.7em;
 	}
 	
@@ -171,7 +171,7 @@
 		}
 		
 		.photo-roll {
-		  height: 300px;
+		  height: 200px;
 		  width: 3550px;
 		  font-size: 0;
 		}
@@ -179,7 +179,7 @@
 		
 		.photo-roll img {
 		  margin-right: 5px;
-		  height: 300px;
+		  height: 200px;
 		  width: 350px;
 		  transition: all 0.5s ease;
 		}
@@ -831,7 +831,7 @@
 		#header .container
 		{
 			position: relative;
-			padding: 4em 0em;
+			padding: 3.5em 0em;
 		}
 
 /*********************************************************************************/
@@ -841,22 +841,23 @@
 	#logo
 	{
 		position: absolute;
-		left: 0em;
+		left: 5em;
 		top: 3em;
 	}
 	
 		#logo h1
 		{
 			float: left;
-			font-size: 1.8em;
+			font-size: 150%;
 			font-weight: 600;
 			padding-left : 0.5em;
+			text-shadow:1px 1px 2px #C0C0C0
 		}
 		
 		#logo h2
 		{
 			float: left;
-			font-size: 1.2em;
+			font-size: 100%;
 			font-weight: 300;
 			padding-left : 1em;
 			padding-top : 0.5em;
@@ -887,9 +888,16 @@
 	#nav
 	{
 		position: absolute;
-		left: 30em;
-		top: 2.2em;
-		overflow: auto;
+		left: 32em;
+		top: 2.5em;
+		overflow: hidden;
+		padding: 10px 0px 10px 0px;
+		
+	}
+	
+	#nav button b
+	{
+		text-shadow:1px 1px 2px #C0C0C0
 	}
 
 		#nav > ul > li
@@ -940,6 +948,7 @@
 		background-size: cover;
 		color: #fff;
 	}
+	
 
 /*********************************************************************************/
 /* Main                                                                          */
@@ -960,6 +969,10 @@
 	.sidebar header h2
 	{
 		font-size: 1.6em;
+	}
+	
+	#side {
+		padding-left: 7em;
 	}
 
 /*********************************************************************************/
@@ -995,7 +1008,7 @@
 	#copyright
 	{
 		position: relative;
-		padding: 3em 0em;
+		padding: 2em 0em;
 		border-top: 1px solid #303030;
 		letter-spacing: 1px;
 		text-align: center;
@@ -1004,6 +1017,11 @@
 	
 	#copyright .container
 	{
+	}
+	
+	#copyright p
+	{
+		text-shadow:0px 0px 2px #ffffff;
 	}
 	
 	#copyright a
@@ -1019,11 +1037,19 @@
 	#marketing
 	{
 		position: relative;
+		padding: 0px 100px 0px 100px ;
 	}
 	
 	#marketing header h2
 	{
-		font-size: 1.6em;
+		font-size: 1.2em;
+		text-shadow:1px 1px 2px #C0C0C0
+	}
+	
+	#marketing p
+	{
+		font-size: 1em;
+		text-shadow:1px 1px 4px #C0C0C0
 	}
 	
 /*********************************************************************************/
