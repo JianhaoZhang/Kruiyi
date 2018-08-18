@@ -84,6 +84,7 @@ public class FileController {
 	    InputStream is = new FileInputStream(initialFile);
 	    org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
 	    response.flushBuffer();
+	    response.setContentType("application/txt");
 	    
 	}
 	
