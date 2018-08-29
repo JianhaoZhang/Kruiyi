@@ -37,12 +37,10 @@
 
 	#page
 	{
-		padding: 1em 0em 1em 0em;
 	}
 	
 	.homepage #page
 	{
-		padding-left:2em;
 	}
 
 	#main
@@ -79,6 +77,6 @@
 	
 	#featured .divider
 	{
-		padding: 1em 0em;
+		padding: 2em 0em;
 	}
 	

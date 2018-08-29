@@ -20,8 +20,6 @@
 
 	.container {
 		width: 1000px;
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	/* Modifiers */
@@ -91,9 +89,7 @@
 			height: 0;
 		}
 
-		.row:first-child > * {
-			padding-top: 0;
-		}
+		
 
 		.row > * {
 			padding-top: 0;

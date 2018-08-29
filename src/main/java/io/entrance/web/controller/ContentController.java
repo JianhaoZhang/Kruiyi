@@ -142,15 +142,15 @@ public class ContentController {
 		Files.deleteIfExists(new File(path+"/menu/news.html").toPath());
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/menu/news.html"));
 		writer.write("<!-- Main -->\r\n" + 
-				"			<div id=\"main\" class=\"container\">\r\n" + 
-				"				<div class=\"row\">\r\n" + 
-				"					<div id=\"side\" class=\"3u w3-animate-right\">\r\n");
+				"			<div id=\"main\" class=\"container\" style=\"margin-left:16.6666666667%;margin-right:16.6666666667%;margin-top:10px;width:auto\">\r\n" + 
+				"				<div class=\"row\" style=\"margin-left:0px\">\r\n" + 
+				"					<div id=\"side\" class=\"w3-animate-right w3-round-large\" style=\"padding-left:0px;width:24.5%;margin-right:0.99%;background:white;height:750px\">");
 		
 		String side = readFile(path+"/newsmenu/newsmenu1.html",StandardCharsets.UTF_8);
 		writer.write(side+"\r\n");
 		writer.write("</div>\r\n" + 
 				"				\r\n" + 
-				"					<div class=\"9u skel-cell-important w3-animate-left\">\r\n" + 
+				"					<div id=\"content\" class=\"skel-cell-important w3-animate-left w3-round-large\" style=\"padding-left:0px;width:74.5%;background:white;height:750px\">\r\n" + 
 				"						<section id=\"newscontent\">");
 		ArrayList<News> q = (ArrayList)newsrepo.findAll();
 		int last = q.size();
@@ -207,7 +207,7 @@ public class ContentController {
 		for (int i=0; i<newsarray.size();i++) {
 		News temp = newsarray.get(i);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/news/news"+temp.getId()+".html"));
-		writer.write("<div class= \"w3-animate-opacity\"><header>\r\n<h2>"+temp.getTitle()+"</h2>\r\n<span class=\"byline\">"+temp.getDate()+"</span>\r\n</header>\r\n");
+		writer.write("<div class= \"w3-animate-opacity\" style=\"margin: 20px 20px;overflow-y:auto;height:90%\"><header>\r\n<h2>"+temp.getTitle()+"</h2>\r\n<span class=\"byline\">"+temp.getDate()+"</span>\r\n</header>\r\n");
 		writer.write(temp.getBody()+"</div>");
 		writer.close();
 		}
@@ -237,7 +237,7 @@ public class ContentController {
 		
 		for (int i=0; i<pages;i++) {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/newsmenu/newsmenu"+(i+1)+".html"));
-			writer.write("<div class =\"w3-animate-opacity\"><section class=\"sidebar\">\r\n" + 
+			writer.write("<div class =\"w3-animate-opacity\" style=\"margin:20px 20px\"><section class=\"sidebar\">\r\n" + 
 					"							<header>\r\n" + 
 					"								<h2>News Menu</h2>\r\n" + 
 					"							</header>\r\n" + 

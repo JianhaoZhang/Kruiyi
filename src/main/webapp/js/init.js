@@ -14,7 +14,7 @@ skel.init({
 	breakpoints: {
 		'desktop': {
 			range: '0-',
-			containers: 1200
+			containers: 1500
 		}
 	}
 }, {
